@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: bisque;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .content-container {
+            background-color: gray;
+            padding: 20px;
+            border: 5px solid white;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+        }
+
+        .pic {
+            height: 300px;
+            width: 300px;
+            padding: 15px;
+            border-radius: 50%; 
+            border: 3px solid white; 
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-btn {
+            padding: 10px 20px;
+            background-color: white;
+            color: gray;
+            border: 2px solid gray;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .toggle-btn:hover {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="content-container">
+        <img class="pic" id="toggleImage" src="../assets/dhanush.jpeg" alt="dhanush">
+        <h2 id="playerName">Dhanush </h2>
+        <div class="button-container">
+            <button class="toggle-btn" onclick="changePlayer(0)">Dhanush</button>
+            <button class="toggle-btn" onclick="changePlayer(1)">Simbu</button>
+            <button class="toggle-btn" onclick="changePlayer(2)">Surya</button>
+            <button class="toggle-btn" onclick="changePlayer(3)">Vikram</button>
+        </div>
+    </div>
+
+    <script>
+       
+        const players = [
+            { name: "dhanush", image:"../Assests/Images/" },
+            { name: "simbu", image: "../Assests/Images/" },
+            { name: "Surya", image: "../Assests/Images/" },
+            { name: "Vikram", image: "../Assests/Images/" }
+        ];
+
+        const imageElement = document.getElementById('toggleImage');
+        const nameElement = document.getElementById('playerName');
+
+        function changePlayer(index) {
+            const player = players[index];
+            imageElement.src = player.image;
+            nameElement.textContent = player.name;
+        }
+
+    </script>
+</body>
+</html>
