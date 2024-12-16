@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Display All Employees : </h2>
+    <p id='first'></p>
+
+    <h2>Display Employees Who's post is Salary : </h2>
+    <p id="one"></p>
+    <h2>Display Employees Who's Gender is Female : </h2>
+    <p id="two"></p>
+    <h2>Display Employees Who's Age is Greater than 55 : </h2>
+    <p id="three"></p>
+    <h2>Display Employees Who's State is Tamilnadu: </h2>
+    <p id="four"></p>
+    <script>
+        let emp = [
+            { id: 1, name: "Rahul", post: "developer", salary: 10000, gender: "female", age: 38, State: "Tamil Nadu" },
+            { id: 2, name: "Tarun", post: "manager", salary: 10000, gender: "Male", age: 35, State: "Kerala" },
+            { id: 3, name: "Nithish", post: "intern", salary: 10000, gender: "Male", age: 27, State: "Karnataka" },
+            { id: 4, name: "Kumar", post: "trainee", salary: 10000, gender: "female", age: 59, State: "Kerala" },
+            { id: 5, name: "Blaze", post: "developer", salary: 10000, gender: "Male", age: 62, State: "Tamil Nadu" },
+            { id: 6, name: "NithishKumar", post: "trainee", salary: 10000, gender: "Male", age: 45, State: "Rajasthan" },
+            { id: 7, name: "NithishBlaze", post: "developer", salary: 10000, gender: "female", age: 39, State: "Tamil Nadu" },
+            { id: 8, name: "Dhanush", post: "intern", salary: 10000, gender: "Male", age: 44, State: "Kerala" },
+            { id: 9, name: "Sai", post: "manager", salary: 10000, gender: "Male", age: 60, State: "Jammu Kashmir" },
+            { id: 10, name: "Sanjay", post: "developer", salary: 10000, gender: "Male", age: 22, State: "Tamil Nadu" },
+        ]
+
+        for (let i of emp) {
+            document.getElementById('first').innerHTML+=(`id : ${i.id} name : ${i.name} post : ${i.post} salary : ${i.salary} gender : ${i.gender} age : ${i.age} state : ${i.State} <br>`);
+            
+        }
+
+    
+        for (let a of emp) {
+            if(a.post == 'manager'){
+                document.getElementById('one').innerHTML+=(`id : ${a.id} name : ${a.name} post : ${a.post} salary : ${a.salary} gender : ${a.gender} age : ${a.age} state : ${a.State} <br>`);
+            }
+
+            if(a.gender == 'female'){
+                document.getElementById('two').innerHTML+=(`id : ${a.id} name : ${a.name} post : ${a.post} salary : ${a.salary} gender : ${a.gender} age : ${a.age} state : ${a.State} <br>`);
+            }
+
+            if(a.age > 55){
+                document.getElementById('three').innerHTML+=(`id : ${a.id} name : ${a.name} post : ${a.post} salary : ${a.salary} gender : ${a.gender} age : ${a.age} state : ${a.State} <br>`);
+            }
+
+            if(a.State == 'Tamil Nadu'){
+                document.getElementById('four').innerHTML+=(`id : ${a.id} name : ${a.name} post : ${a.post} salary : ${a.salary} gender : ${a.gender} age : ${a.age} state : ${a.State} <br>`);
+            }
+
+            
+                
+        }
+        
+
+        
+
+
+    </script>
+</body>
+
+</html>
