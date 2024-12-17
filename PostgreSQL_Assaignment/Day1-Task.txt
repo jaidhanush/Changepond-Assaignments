@@ -1,0 +1,26 @@
+select first_name from customer where address_id >10;
+select first_name from customer where address_id <10;
+select*from rental where customer_id = 371;
+select*from language where name != 'French';
+select first_name from customer where address_id <=10;
+select first_name from customer where address_id >=10;
+
+select*from film where not (release_year= 2006) ;
+select*from film where length between 100 and 130 ;
+select*from film where rating='R' and rental_rate=4.99;
+select*from film where rating='R' or rating='G'  ;
+
+
+ Select * from customer where address_id IN (25,24,23);
+ Select *  from customer where address_id NOT IN (25,24,23);
+
+select*from film where title like 'H%'  ;
+select*from film where title not like 'H%'  ;
+select*from film where title  like 'H%' offset 6  ;
+select * from film where title like 'H%' order by title desc limit 20;
+
+ Select * first_name is not Null;
+ Select * is Null;
+
+
+
