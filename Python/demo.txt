@@ -1,0 +1,24 @@
+import os
+
+src_file='C:\Users\jayakumar.m\Downloads\frontend-master\Python\FileHandling'
+des_file='C:\Users\jayakumar.m\Downloads\frontend-master\Python'
+def Createfile(filename):
+    if(os.path.exists(filename)):
+        with open(src_file, 'r') as src, open(des_file, 'w') as dst:
+            # Read content from the source file and write it into the destination file
+            dst.write(src.read())
+        print(f"File has been copied successfully to {des_file}")
+        # print('File is Already Exists')
+    else:
+        file = open(filename,"w")
+        
+        
+def main():
+    print('Enter File YOu want to create')
+    file_name=input()
+    Createfile(file_name)
+    
+    
+if __name__=="__main__":
+     main()
+    
