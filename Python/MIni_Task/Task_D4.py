@@ -81,6 +81,3 @@ for i in range(len(my_list)):
 
 print(f"Maximum Size of List:{max},Minimum Size of List: {min},Added Element: {add}")
     
-
-
-
