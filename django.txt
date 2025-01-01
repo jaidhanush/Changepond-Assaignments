@@ -1,0 +1,49 @@
+pip install virtualenvwrapper-win
+
+mkvirtualenv django_jai
+
+pip freeze 
+
+pip install django
+
+django-admin startproject bookstore
+
+cd bookstore
+
+code .
+
+------------------------------------------------------------
+workon django
+
+py manage.py runserver
+
+
+                           func name
+                            |
+http://127.0.0.1:8000/blog/12
+                        | 
+                     app name
+
+
+pip install mysqlclient
+
+py manage.py makemigrations  
+
+py manage.py migrate
+
+workon ---- to see 
+------------------------------------------------------------------
+1/1/25 :
+
+C:\Users\jayakumar.m\Downloads\frontend-master\bookstore>py manage.py shell
+Python 3.9.10 (tags/v3.9.10:f2f3f53, Jan 17 2022, 15:14:21) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from author.models import Author
+>>> Author.objects.all()
+<QuerySet []>
+>>> Author.objects.create(first_name='JK',last_name='Rowling',age=28)
+<Author: Author object (1)>
+>>>exit()
+
+
