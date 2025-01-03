@@ -6,9 +6,11 @@ pip freeze
 
 pip install django
 
-django-admin startproject bookstore
+django-admin startproject projectname
 
 cd bookstore
+
+django-admin startapp appname
 
 code .
 
@@ -26,6 +28,8 @@ http://127.0.0.1:8000/blog/12
 
 
 pip install mysqlclient
+
+py manage.py migrate
 
 py manage.py makemigrations  
 
@@ -47,3 +51,30 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>exit()
 
 
+===========================================================
+2/2/25 ---------render in django => documentation
+
+py manage.py createsuperuser ---> admin login
+
+
+pip install pillow ---> picture library
+
+
+
+
+
+
+
+API: api is nothing but URL which we can integer into any frontend application 
+    -> when we hit the url along with some parameter and request methid then it will return expected response
+
+
+CRUD operation :
+   GET METHOD : to fetch the data
+   POST : to add the data
+   GET(id) : specific data fetch
+   PUT : to update all field
+   PATCH :to update specific field
+   DELETE :specific field data
+
+https://docs.djangoproject.com/en/5.1/search/?q=render+to+string
