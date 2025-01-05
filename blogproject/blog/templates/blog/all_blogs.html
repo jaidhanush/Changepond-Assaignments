@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Blogs</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 3rem;
+            color: #007BFF;
+        }
+
+        .blog-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .card p {
+            padding: 0 20px;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .card a {
+            display: block;
+            text-align: center;
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Blog Posts</h1>
+    <div class="blog-cards">
+        {% for post in posts %}
+            <div class="card">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.description|slice:":150" }}...</p>
+                <a href="{% url 'blog_detail' post.slug %}">View Details</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
