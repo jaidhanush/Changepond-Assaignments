@@ -14,53 +14,79 @@
         header {
             background-color: #007BFF;
             color: white;
-            padding: 20px 10%;
+            padding: 40px 10%;
             text-align: center;
             position: relative;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
 
         header p {
             margin: 10px 0;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
         .sidebar {
             position: absolute;
-            top: 20px;
+            top: 50%;
             right: 10%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .all-blogs-link, 
+        .btn-success {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s;
         }
 
         .all-blogs-link {
-            display: inline-block;
-            padding: 10px 20px;
             background-color: #FF5733;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
         }
 
         .all-blogs-link:hover {
             background-color: #FF4500;
+            transform: translateY(-3px);
+        }
+
+        .btn-success {
+            background-color: #28A745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
         }
 
         section {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 30px;
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #495057;
         }
 
         article {
             border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             padding-bottom: 20px;
         }
 
@@ -70,19 +96,21 @@
 
         article h3 {
             margin: 0;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #007BFF;
         }
 
         article p {
-            margin: 10px 0;
-            font-size: 1rem;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            color: #555;
         }
 
         article a {
             color: #007BFF;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
         article a:hover {
@@ -91,10 +119,10 @@
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             background-color: #333;
             color: white;
-            margin-top: 40px;
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -105,6 +133,7 @@
 
         <aside class="sidebar">
             <a href="{% url 'all_blogs' %}" class="all-blogs-link">View All Blogs</a>
+            <a href="{% url 'create_post' %}" class="btn btn-success">Create Post</a>
         </aside>
     </header>
 
