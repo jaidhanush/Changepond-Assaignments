@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Post
 from django.shortcuts import get_object_or_404
+from .forms import MyForm
 
 def homepage(request):
     latest_posts = Post.objects.all().order_by('-date')[:3]
@@ -14,3 +15,4 @@ def all_blogs(request):
 def blog_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
     return render(request, 'blog/blog_detail.html', {'post': post})
+
