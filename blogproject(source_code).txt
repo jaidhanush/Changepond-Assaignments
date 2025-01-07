@@ -1,0 +1,193 @@
+models.py:
+
+from django.db import models
+
+class Blogger(models.Model):
+    firstname = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    email = models.EmailField()
+    contact_number = models.CharField(max_length=15)
+
+    def __str__(self):
+        return f"{self.firstname} {self.lastname}"
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    date = models.DateTimeField(auto_now_add=True)
+    imagename = models.ImageField(upload_to='images/')
+    content = models.TextField()
+    description = models.TextField()
+    slug = models.SlugField(unique=True)
+    blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+---------------------------------------------
+
+views.py
+
+from django.shortcuts import render
+from .models import Post
+from django.shortcuts import get_object_or_404
+
+def homepage(request):
+    latest_posts = Post.objects.all().order_by('-date')[:5]
+    return render(request, 'blog/homepage.html', {'posts': latest_posts})
+
+
+def all_blogs(request):
+    posts = Post.objects.all()
+    return render(request, 'blog/all_blogs.html', {'posts': posts})
+
+def blog_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'blog/blog_detail.html', {'post': post})
+
+--------------------------------------------------
+
+1.homepage.html page
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Home</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Blog</h1>
+        <p>Your source for the latest articles</p>
+    </header>
+
+    <section>
+        <h2>Latest Blogs</h2>
+        {% for post in posts %}
+            <article>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.description }}</p>
+                <a href="{% url 'blog_detail' post.slug %}">Read more</a>
+            </article>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Blog Project</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+2.all_blogs.html 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Blogs</title>
+    <style>
+        .card { 
+            border: 1px solid #ddd; 
+            padding: 20px; 
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Blog Posts</h1>
+    <div class="blog-cards">
+        {% for post in posts %}
+            <div class="card">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.description }}</p>
+                <a href="{% url 'blog_detail' post.slug %}">View Details</a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+
+3.blog_details.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <img src="{{ post.imagename.url }}" alt="Blog Image">
+    <p>{{ post.content }}</p>
+    <p>{{post.description}}</p>
+    <p><strong>Author:</strong> {{ post.blogger.firstname }} {{ post.blogger.lastname }}</p>
+    <p><strong>Author Email:</strong> {{ post.blogger.email }} </p>
+    <p><strong>Upload Date & Time:</strong> {{ post.date }} </p>
+    
+</body>
+</html>
+
+
+
+-----------------------------
+
+blog.urls
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.homepage, name='homepage'),
+    path('blogs/', views.all_blogs, name='all_blogs'),
+    path('blog/<slug:slug>/', views.blog_detail, name='blog_detail'),
+]
+
+
+
+---------------------------
+
+blogproject.urls
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('blog.urls')),
+]
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+------------------------------------
+settings.py
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

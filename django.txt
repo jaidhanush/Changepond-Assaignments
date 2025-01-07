@@ -6,6 +6,8 @@ pip freeze
 
 pip install django
 
+pip install mysql client
+
 django-admin startproject projectname
 
 cd bookstore
