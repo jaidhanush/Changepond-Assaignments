@@ -70,50 +70,66 @@
         }
 
         section {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 60px auto;
             padding: 30px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card {
             background-color: white;
             border-radius: 12px;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 320px;
+            transition: transform 0.3s ease;
         }
 
-        section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: #495057;
+        .card:hover {
+            transform: translateY(-10px);
         }
 
-        article {
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
 
-        article:last-child {
-            border-bottom: none;
+        .card-content {
+            padding: 20px;
         }
 
-        article h3 {
+        .card h3 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #007BFF;
         }
 
-        article p {
+        .card p {
             margin: 15px 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #555;
+            height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        article a {
+        .card a {
+            display: inline-block;
+            margin-top: 15px;
             color: #007BFF;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
         }
 
-        article a:hover {
+        .card a:hover {
             text-decoration: underline;
         }
 
@@ -134,18 +150,28 @@
         <aside class="sidebar">
             <a href="{% url 'all_blogs' %}" class="all-blogs-link">View All Blogs</a>
             <a href="{% url 'create_post' %}" class="btn btn-success">Create Post</a>
+            <a href="{% url 'create_blogger' %}" class="btn btn-success">Add Blogger</a>
         </aside>
     </header>
 
     <section>
         <h2>Latest Blogs</h2>
-        {% for post in posts %}
-            <article>
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.description }}</p>
-                <a href="{% url 'blog_detail' post.slug %}">Read more</a>
-            </article>
-        {% endfor %}
+        <div class="card-container">
+            {% for post in posts %}
+                <div class="card">
+                    {% if post.imagename %}
+                        <img src="{{ post.imagename.url }}" alt="{{ post.title }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/320x200" alt="Placeholder Image">
+                    {% endif %}
+                    <div class="card-content">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.description }}</p>
+                        <a href="{% url 'blog_detail' post.slug %}">Read more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </section>
 
     <footer>

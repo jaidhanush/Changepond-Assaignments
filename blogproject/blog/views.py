@@ -4,25 +4,25 @@ from django.shortcuts import get_object_or_404
 from .forms import BloggerForm, PostForm
 
 
-def create_post(request):
+def create_blogger(request):
     if request.method == 'POST':
-        blogger_form = BloggerForm(request.POST)
-        post_form = PostForm(request.POST, request.FILES)
-        if blogger_form.is_valid() and post_form.is_valid():
-            blogger = blogger_form.save()
-            post = post_form.save(commit=False)
-            post.blogger = blogger
-            post.save()
+        form = BloggerForm(request.POST)
+        if form.is_valid():
+            form.save()
             return redirect('homepage')
     else:
-        blogger_form = BloggerForm()
-        post_form = PostForm()
-    
-    return render(request, 'blog/create_post.html', {
-        'blogger_form': blogger_form,
-        'post_form': post_form
-    })
+        form = BloggerForm()
+    return render(request, 'blog/create_blogger.html', {'form': form})
 
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('homepage')
+    else:
+        form = PostForm()
+    return render(request, 'blog/create_post.html', {'form': form})
 
 def homepage(request):
     latest_posts = Post.objects.all().order_by('-date')[:3]
