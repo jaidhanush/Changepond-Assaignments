@@ -1,0 +1,171 @@
+git hub comment
+
+
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp
+$ git init
+Initialized empty Git repository in D:/gitlab demo/todoapp/.git/
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git config user.email
+anmolc.work@gmail.com
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git remote add origin https://gitlab.com/changepond-training/todo-app.git
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git remote -v
+origin  https://gitlab.com/changepond-training/todo-app.git (fetch)
+origin  https://gitlab.com/changepond-training/todo-app.git (push) 
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git log -1
+commit 4b61e12405690dbbf06e12c0eba9025dbd697ba9 (HEAD -> master)
+Author: Anmol Chaware <anmolc.work@gmail.com>
+Date:   Wed Jan 8 10:44:38 2025 +0530
+
+    Initial commit
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git push origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 380 bytes | 190.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: To create a merge request for master, visit:
+remote:   https://gitlab.com/changepond-training/todo-app/-/merge_requests/new?merge_request%5Bsource_branch%5D=master
+remote:
+To https://gitlab.com/changepond-training/todo-app.git
+ * [new branch]      master -> master
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git branch
+* master
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git fetch
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 2.78 KiB | 101.00 KiB/s, done.
+From https://gitlab.com/changepond-training/todo-app
+ * [new branch]      main       -> origin/main
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git branch
+* master
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git checkout main
+Switched to a new branch 'main'
+branch 'main' set up to track 'origin/main'.
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (main)
+$ git branch
+* main
+  master
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (main)
+$ git checkout master
+Switched to branch 'master'
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git checkout -b feature1
+Switched to a new branch 'feature1'
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (feature1)
+$ git log -1
+commit 69cf793877b519522edee108d19d1b518c09721f (HEAD -> feature1)
+Author: Anmol Chaware <anmolc.work@gmail.com>
+Date:   Wed Jan 8 10:57:38 2025 +0530
+
+    Made changes for feature1
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (feature1)
+$ git pull origin master
+From https://gitlab.com/changepond-training/todo-app
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (feature1)
+$ git push --set-upstream origin feature1
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 307 bytes | 153.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: To create a merge request for feature1, visit:
+remote:   https://gitlab.com/changepond-training/todo-app/-/merge_requests/new?merge_request%5Bsource_branch%5D=feature1
+remote:
+To https://gitlab.com/changepond-training/todo-app.git
+ * [new branch]      feature1 -> feature1
+branch 'feature1' set up to track 'origin/feature1'.
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (feature1)
+$ git checkout master
+Switched to branch 'master'
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git pull origin master
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 592 bytes | 34.00 KiB/s, done.
+From https://gitlab.com/changepond-training/todo-app
+ * branch            master     -> FETCH_HEAD
+   4b61e12..ae11d8a  master     -> origin/master
+Updating 4b61e12..ae11d8a
+Fast-forward
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git checkout -b feature1/changes
+fatal: cannot lock ref 'refs/heads/feature1/changes': 'refs/heads/feature1' exists; cannot create 'refs/heads/feature1/changes'
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (master)
+$ git checkout -b feature2
+Switched to a new branch 'feature2'
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (feature2)
+$ git cherry-pick 69cf793877b519522edee108d19d1b518c09721f
+[feature2 0200a38] Made changes for feature1
+ Date: Wed Jan 8 10:57:38 2025 +0530
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (feature2)
+$ git log -1
+commit 0200a386a2fe7b9d99d0d7f5e39b18df72968545 (HEAD -> feature2)
+Author: Anmol Chaware <anmolc.work@gmail.com>
+Date:   Wed Jan 8 10:57:38 2025 +0530
+
+    Made changes for feature1
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (feature2)
+$ git push --set-upstream origin feature2
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 314 bytes | 44.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: To create a merge request for feature2, visit:
+remote:   https://gitlab.com/changepond-training/todo-app/-/merge_requests/new?merge_request%5Bsource_branch%5D=feature2
+remote:
+To https://gitlab.com/changepond-training/todo-app.git
+ * [new branch]      feature2 -> feature2
+branch 'feature2' set up to track 'origin/feature2'.
+
+admin@DESKTOP-P9BSBQ3 MINGW64 /d/gitlab demo/todoapp (feature2)
+$

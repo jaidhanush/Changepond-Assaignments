@@ -12,6 +12,8 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 class AuthorViewSet(ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+    parser_classes=(parsers.FormParser,parsers.MultiPartParser,
+                    parsers.FileUploadParser)
     authentication_classes = [JWTAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     

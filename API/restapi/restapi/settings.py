@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'book',
    'rest_framework_simplejwt',
+    'corsheaders',
     
 ]
 
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'restapi.urls'
@@ -210,6 +212,17 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+
+CORS_ORIGIN_ALLOW_ALL =False
+
+CORS_ORIGIN_WHITELIST = [
+  
+    "http://localhost:3000",
+
+]
+
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'uploads')
 MEDIA_URL ='/uploads/'
